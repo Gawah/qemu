@@ -1023,7 +1023,7 @@ static int qemu_gluster_do_truncate(struct glfs_fd *fd, int64_t offset,
 #endif /* CONFIG_GLUSTERFS_FALLOCATE */
 #ifdef CONFIG_GLUSTERFS_ZEROFILL
     case PREALLOC_MODE_FULL:
-        if (glfs_ftruncate(fd, offset)) {
+        if (glfs_ftruncate(fd, offset,NULL,NULL)) {
             error_setg_errno(errp, errno, "Could not resize file");
             return -errno;
         }
@@ -1034,7 +1034,7 @@ static int qemu_gluster_do_truncate(struct glfs_fd *fd, int64_t offset,
         break;
 #endif /* CONFIG_GLUSTERFS_ZEROFILL */
     case PREALLOC_MODE_OFF:
-        if (glfs_ftruncate(fd, offset)) {
+        if (glfs_ftruncate(fd, offset,NULL,NULL)) {
             error_setg_errno(errp, errno, "Could not resize file");
             return -errno;
         }
