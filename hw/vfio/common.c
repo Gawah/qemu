@@ -245,10 +245,10 @@ uint64_t vfio_region_read(void *opaque,
             cpu_physical_memory_read(dmaaddr, buf, 4);
             rirbs[x] = (uint32_t)ldl_p(buf);
 
-            printf("CORB caddr:0x%lx nid:0x%lx control:0x%lx param:0x%lx "
+            printf("CORB caddr:0x%lx nid:0x%lx control:0x%lx00 param:0x%lx "
                 "response:0x%lx",
                 ((corbs[x] >> 28) & 0xf), ((corbs[x] >> 20) & 0x7f),
-                ((corbs[x] >> 8) & 0xfff), (corbs[x] & 0xff),
+                ((corbs[x] >> 8) & 0xf00), (corbs[x] & 0xffff),
                 rirbs[x]);
 
             cpu_physical_memory_read(dmaaddr + 4, buf, 4);
