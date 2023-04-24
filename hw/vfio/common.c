@@ -167,7 +167,7 @@ void vfio_region_write(void *opaque, hwaddr addr,
             corbs[x] = (uint32_t)ldl_p(buf);
 
             printf("CORB[%ld] = 0x%" PRIx64 " (caddr:0x%lx nid:0x%lx "
-                "control:0x%lx00 param:0x%lx)\n",
+                "control:0x%lx param:0x%lx)\n",
                 x,
                 corbs[x],
                 ((corbs[x] >> 28) & 0xf), ((corbs[x] >> 20) & 0x7f),
